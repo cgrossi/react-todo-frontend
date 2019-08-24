@@ -11,6 +11,17 @@
   margin-bottom: 20px;
 }
 
-.TaskList .Task:last-of-type {
-  margin-bottom: 0;
+.TaskList .button-container {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.TaskList button {
+  border: none;
+  display: inline-block;
+  padding: 0.5em 1em;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgb(0, 56, 78);
+  cursor: pointer;
 }

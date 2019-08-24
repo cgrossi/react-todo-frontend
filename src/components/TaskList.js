@@ -44,6 +44,11 @@ class TaskList extends Component {
     return (
       <div className="TaskList">
         {tasks}
+        <div className="button-container">
+          <button>Add New Task</button>
+          <button>Filter Completed</button>
+          <button>Sort Completed</button>
+        </div>
       </div>
     )
   }
