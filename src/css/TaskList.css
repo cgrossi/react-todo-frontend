@@ -4,6 +4,7 @@
   margin-right: auto;
   background: rgb(221, 221, 221);
   padding: 20px;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.7), -1px -1px 0 rgba(0, 0, 0, 0.7);
 }
 
 .TaskList .Task {

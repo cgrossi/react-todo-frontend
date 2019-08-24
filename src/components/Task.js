@@ -6,14 +6,20 @@ import trash from '../img/trash.svg';
 
 class Task extends Component {
 
+  handleClick = (e) => {
+    if(e.target.type === 'checkbox'){
+      this.props.handleCheck(e.target.id)
+    }
+  }
+
   render() {
     return (
       <div className="Task">
-        <input type="checkbox" id="box-1"/>
-        <label htmlFor="box-1">Get a haircut</label>
+        <input type="checkbox" id={this.props.id} onChange={this.handleClick} checked={this.props.completed} />
+        <label htmlFor={this.props.id}>{this.props.title}</label>
         <div>
-          <img src={edit} alt="Edit Task" />
-          <img src={trash} alt="Delete Task" />
+          <img src={edit} id={this.props.id} alt="Edit Task" />
+          <img src={trash} id={this.props.id} alt="Delete Task" />
         </div>
       </div>
     )

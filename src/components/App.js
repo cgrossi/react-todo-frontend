@@ -6,7 +6,6 @@ import TaskList from './TaskList';
 const App = () => {
   return (
     <div className="App">
-      <h1>Task List</h1>
       <TaskList />
     </div>
   )

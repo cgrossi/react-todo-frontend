@@ -5,12 +5,10 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  /* margin-bottom: 25px; */
 }
 
 .Task input[type="checkbox"] { 
   visibility: hidden;
-  /* min-width: 10%; */
 }
 
 .Task input[type="checkbox"] + label {
@@ -58,4 +56,8 @@
 
 .Task div:last-of-type {
   padding-right: 7px;
+}
+
+.Task img {
+  cursor: pointer;
 }
