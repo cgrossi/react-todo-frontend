@@ -1,0 +1,61 @@
+.Task {
+  display: flex;
+  padding: 10px;
+  background: rgb(247, 247, 247);
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.Task input[type="checkbox"] { 
+  visibility: hidden;
+  /* min-width: 10%; */
+}
+
+.Task input[type="checkbox"] + label {
+  display: block;
+  color: #333;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.Task input[type="checkbox"] + label:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #6cc0e5;
+  position: absolute;
+  left: 20px;
+  top: -500%;
+  bottom: -500%;
+  margin: auto;
+  opacity: .6;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+.Task input[type="checkbox"]:checked + label:before {
+  width: 10px;
+  position: absolute;
+  left: 25px; 
+  top: -520%;
+  bottom: -500%;
+  margin: auto;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.Task div:last-of-type img:last-of-type {
+  padding-left: 10px;
+}
+
+.Task div:last-of-type {
+  padding-right: 7px;
+}
