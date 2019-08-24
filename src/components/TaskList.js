@@ -27,11 +27,17 @@ class TaskList extends Component {
     this.setState({newState})
   }
 
+  taskDelete = (id) => {
+    let newState = this.state.tasks.filter(task => task.id !== id)
+    this.setState({ tasks: newState })
+  }
+
   render() {
     const tasks = this.state.tasks.map(task => <Task 
       key={task.id} 
       id={task.id}
       title={task.title}
+      taskDelete={this.taskDelete}
       handleCheck={this.handleCheck} 
       completed={task.completed} />)
 

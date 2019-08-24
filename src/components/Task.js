@@ -12,6 +12,10 @@ class Task extends Component {
     }
   }
 
+  handleDelete = (e) => {
+    this.props.taskDelete(e.target.id)
+  }
+
   render() {
     return (
       <div className="Task">
@@ -19,7 +23,7 @@ class Task extends Component {
         <label htmlFor={this.props.id}>{this.props.title}</label>
         <div>
           <img src={edit} id={this.props.id} alt="Edit Task" />
-          <img src={trash} id={this.props.id} alt="Delete Task" />
+          <img src={trash} id={this.props.id} onClick={this.handleDelete} alt="Delete Task" />
         </div>
       </div>
     )
