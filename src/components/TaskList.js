@@ -8,6 +8,10 @@ class TaskList extends Component {
     return (
       <div className="TaskList">
         <Task />
+        <Task />
+        <Task />
+        <Task />
+        <Task />
       </div>
     )
   }
