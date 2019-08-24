@@ -35,6 +35,11 @@
   transition: all .12s, border-color .08s;
 }
 
+.Task input[type="checkbox"]:checked + label {
+  text-decoration-line: line-through;
+  opacity: .5;
+}
+
 .Task input[type="checkbox"]:checked + label:before {
   width: 10px;
   position: absolute;
