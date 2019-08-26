@@ -1,36 +1,47 @@
 import React, { Component } from 'react'
-import uuid from 'uuid';
+import axios from 'axios';
 
 import '../css/TaskList.css';
 import Task from './Task';
 
 class TaskList extends Component {
   state = {
-    tasks: [
-      { id: uuid(), title: 'Get a haircut', completed: false },
-      { id: uuid(), title: 'Get a job', completed: false },
-      { id: uuid(), title: 'Learn React', completed: true },
-      { id: uuid(), title: 'Mow the lawn', completed: false },
-      { id: uuid(), title: 'Practice web dev', completed: false },
-      { id: uuid(), title: 'Work on resume', completed: true },
-    ]
+    tasks: []
   }
 
   handleCheck = (id) => {
     let newState = this.state.tasks.map(task => {
-      if(task.id === id) {
+      if(task.id === +id) {
         task.completed = !task.completed
         return task
       }
       return task
     })
-    this.setState({newState})
+    this.setState({tasks: newState})
   }
 
   taskDelete = (id) => {
-    let newState = this.state.tasks.filter(task => task.id !== id)
+    let newState = this.state.tasks.filter(task => task.id !== +id)
     this.setState({ tasks: newState })
   }
+
+  componentDidMount() {
+    axios({
+      method: 'get',
+      url: 'https://todo-api-6543.herokuapp.com/api/tasks',
+    }).then(response => {
+      let newState = response.data.map(task => {
+        return {
+          id: task.id,
+          title: task.text,
+          completed: task.completed,
+          created: task.created
+        }
+      })
+      this.setState({tasks: newState})
+    }).catch(e => console.log(e))
+  }
+  
 
   render() {
     const tasks = this.state.tasks.map(task => <Task 
