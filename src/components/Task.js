@@ -12,7 +12,8 @@ class Task extends Component {
 
   handleClick = (e) => {
     if(e.target.type === 'checkbox'){
-      this.props.handleCheck(e.target.id)
+      let label = document.querySelector(`label[for="${this.props.id}"`)
+      this.props.handleCheck(e.target.id, label.innerHTML, e.target.checked)
     }
   }
 
@@ -21,7 +22,6 @@ class Task extends Component {
       this.setState({ editing: !this.state.editing})
     } else {
       let input = document.querySelector('.edit-input')
-      console.log('target:', e.target, 'id:', e.target.id, 'input:', input, 'input value:', input.value)
       this.props.taskEdit(e.target.id, input.value)
       this.setState({ editing: !this.state.editing})
     }
@@ -30,10 +30,6 @@ class Task extends Component {
 
   handleDelete = (e) => {
     this.props.taskDelete(e.target.id)
-  }
-
-  updateTask = (e) => {
-    
   }
 
   render() {

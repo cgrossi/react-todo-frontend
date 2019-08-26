@@ -9,10 +9,15 @@ class TaskList extends Component {
     tasks: []
   }
 
-  handleCheck = (id) => {
+  handleCheck = async (id, text, checked) => {
+    let response = await db.patch(`/tasks/${id}/`, {
+      text: text,
+      completed: checked
+    })
     let newState = this.state.tasks.map(task => {
       if(task.id === +id) {
-        task.completed = !task.completed
+        task.text = response.data.text
+        task.completed = response.data.completed
         return task
       }
       return task
@@ -26,16 +31,17 @@ class TaskList extends Component {
     this.setState({ tasks: newState })
   }
 
-  taskEdit = async (id, text) => {
+  taskEdit = async (id, text, checked) => {
     let response = await db.patch(`/tasks/${id}/`, {
         text: text,
-        completed: false
+        completed: checked
       }
     )
 
     let newState = this.state.tasks.map(task => {
       if(task.id === +id) {
         task.title = response.data.text
+        task.completed = response.data.completed
         return task
       }
       return task
