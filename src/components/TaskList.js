@@ -3,10 +3,12 @@ import db from '../apis/db';
 
 import '../css/TaskList.css';
 import Task from './Task';
+import Loading from './Loading';
 
 class TaskList extends Component {
   state = {
-    tasks: []
+    tasks: [],
+    loading: false
   }
 
   handleCheck = async (id, text, checked) => {
@@ -23,6 +25,19 @@ class TaskList extends Component {
       return task
     })
     this.setState({tasks: newState})
+  }
+
+  addTask = async () => {
+    console.log(this.state.tasks)
+    let newTasks = this.state.tasks.map(task => task)
+    let response = await db.post('/tasks/', {
+      text: 'New Task',
+      completed: false
+    })
+    
+    newTasks.push({id: response.data.id, title: response.data.text, completed: response.data.completed, created: response.data.created})
+    this.setState({ tasks: newTasks})
+    console.log(response)
   }
 
   taskDelete = async (id) => {
@@ -51,6 +66,7 @@ class TaskList extends Component {
   }
 
   componentDidMount() {
+    this.setState({ loading: true })
     db.get('/tasks').then(response => {
       let newState = response.data.map(task => {
         return {
@@ -60,7 +76,10 @@ class TaskList extends Component {
           created: task.created
         }
       })
-      this.setState({tasks: newState})
+      this.setState({ 
+        tasks: newState,
+        loading: false
+      })
     }).catch(e => console.log(e))
   }
   
@@ -77,14 +96,9 @@ class TaskList extends Component {
 
     return (
       <div className="TaskList">
-        {tasks ? tasks : <div class="ui segment">
-                          <div class="ui active inverted dimmer">
-                          <div class="ui text loader">Loading</div>
-                          </div>
-                          <p></p>
-                        </div>}
+        {this.state.loading ? <Loading /> : tasks}
         <div className="button-container">
-          <button>Add New Task</button>
+          <button onClick={this.addTask}>Add New Task</button>
           <button>Filter Completed</button>
           <button>Sort Completed</button>
         </div>

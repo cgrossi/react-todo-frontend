@@ -15,3 +15,7 @@ button {
   font-size: 1.1rem;
   color: #333;
 }
+
+.App {
+  margin-top: 20px;
+}

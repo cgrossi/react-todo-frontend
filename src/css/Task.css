@@ -66,3 +66,18 @@
 .Task img {
   cursor: pointer;
 }
+
+.Task .edit-input {
+  max-width: 60%;
+  border: none;
+  border-bottom: 1px solid gray;
+  padding: 5px 5px;
+  background: rgba(255, 255, 255, 0.1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.Task .edit-input:focus {
+  outline: none;
+}
