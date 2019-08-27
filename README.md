@@ -1,4 +1,4 @@
-This repo is the front end of a todo application created with React. It's live on Surge at [http://stackmusetaskmanager.surge.sh/](http://stackmusetaskmanager.surge.sh/)
+This repo is the front end of a todo application created with React. It's live on Surge at [http://stackmusetaskmanager.surge.sh/](http://stackmusetaskmanager.surge.sh/)  
 It's wired up to a seperate backend running Django and a Postgres DB hosted on Heroku
 
 # Todo
