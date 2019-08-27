@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  background: linear-gradient(to bottom right, rgb(18, 49, 83), rgb(10, 40, 58));
+  height: 100%;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.2rem;
@@ -18,4 +23,10 @@ button {
 
 .App {
   margin-top: 20px;
+}
+
+.App .heading {
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  font-size: 2rem;
 }

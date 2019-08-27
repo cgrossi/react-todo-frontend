@@ -25,7 +25,6 @@ class Task extends Component {
       this.props.taskEdit(e.target.id, input.value)
       this.setState({ editing: !this.state.editing})
     }
-    
   }
 
   handleDelete = (e) => {

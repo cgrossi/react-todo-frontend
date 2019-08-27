@@ -8,7 +8,9 @@ import Loading from './Loading';
 class TaskList extends Component {
   state = {
     tasks: [],
-    loading: false
+    loading: false,
+    isFiltered: false,
+    filteredTasks: []
   }
 
   handleCheck = async (id, text, checked) => {
@@ -16,6 +18,7 @@ class TaskList extends Component {
       text: text,
       completed: checked
     })
+    
     let newState = this.state.tasks.map(task => {
       if(task.id === +id) {
         task.text = response.data.text
@@ -28,16 +31,19 @@ class TaskList extends Component {
   }
 
   addTask = async () => {
-    console.log(this.state.tasks)
     let newTasks = this.state.tasks.map(task => task)
     let response = await db.post('/tasks/', {
       text: 'New Task',
       completed: false
     })
     
-    newTasks.push({id: response.data.id, title: response.data.text, completed: response.data.completed, created: response.data.created})
+    newTasks.push({ 
+      id: response.data.id, 
+      title: response.data.text, 
+      completed: response.data.completed, 
+      created: response.data.created})
+
     this.setState({ tasks: newTasks})
-    console.log(response)
   }
 
   taskDelete = async (id) => {
@@ -65,6 +71,17 @@ class TaskList extends Component {
     this.setState({ tasks: newState })
   }
 
+  filterCompleted = () => {
+    this.setState({ isFiltered: !this.state.isFiltered })
+    let filtered = [...this.state.tasks].filter(task => !task.completed)
+    this.setState({filteredTasks: filtered})
+  }
+
+  sortTasks = () => {
+    let sorted = [...this.state.tasks].sort((a, b) => (a.completed === b.completed) ? 0 : a.completed ? 1 : -1)
+    this.setState({tasks: sorted})
+  }
+
   componentDidMount() {
     this.setState({ loading: true })
     db.get('/tasks').then(response => {
@@ -85,7 +102,9 @@ class TaskList extends Component {
   
 
   render() {
-    const tasks = this.state.tasks.map(task => <Task 
+    let tasks;
+    if(this.state.isFiltered) {
+      tasks = this.state.filteredTasks.map(task => <Task 
       key={task.id} 
       id={task.id}
       title={task.title}
@@ -93,14 +112,24 @@ class TaskList extends Component {
       handleCheck={this.handleCheck} 
       completed={task.completed}
       taskEdit={this.taskEdit} />)
+    } else {
+      tasks = this.state.tasks.map(task => <Task 
+        key={task.id} 
+        id={task.id}
+        title={task.title}
+        taskDelete={this.taskDelete}
+        handleCheck={this.handleCheck} 
+        completed={task.completed}
+        taskEdit={this.taskEdit} />)
+    }
 
     return (
       <div className="TaskList">
         {this.state.loading ? <Loading /> : tasks}
         <div className="button-container">
           <button onClick={this.addTask}>Add New Task</button>
-          <button>Filter Completed</button>
-          <button>Sort Completed</button>
+          <button onClick={this.filterCompleted}>Filter Completed</button>
+          <button onClick={this.sortTasks}>Sort Completed</button>
         </div>
       </div>
     )
