@@ -36,6 +36,7 @@ class Task extends Component {
     if(this.state.editing) {
       task = <input type="text" className={`edit-input ${this.props.id}`} />
     } else {
+      console.log(this.props)
       task = <label htmlFor={this.props.id}>{this.props.title.length > 30 ? `${this.props.title.substring(0, 27)}...` : this.props.title}</label>
     }
     return (

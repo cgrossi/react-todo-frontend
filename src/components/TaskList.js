@@ -88,9 +88,9 @@ class TaskList extends Component {
       let newState = response.data.map(task => {
         return {
           id: task.id,
-          title: task.text,
+          title: task.title,
           completed: task.completed,
-          created: task.created
+          date: task.date
         }
       })
       this.setState({ 
