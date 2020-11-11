@@ -33,15 +33,15 @@ class TaskList extends Component {
   addTask = async () => {
     let newTasks = this.state.tasks.map(task => task)
     let response = await db.post('/tasks/', {
-      text: 'New Task',
+      title: 'New Task',
       completed: false
     })
     
     newTasks.push({ 
       id: response.data.id, 
-      title: response.data.text, 
+      title: response.data.title, 
       completed: response.data.completed, 
-      created: response.data.created})
+      date: response.data.date})
 
     this.setState({ tasks: newTasks})
   }

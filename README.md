@@ -5,6 +5,7 @@ It's wired up to a seperate backend running Django and a Postgres DB hosted on H
 - Add Sort Feature
 - Make Header
 - Build & connect new backend
+- Convert components to modern React Hooks
 
 ## Available Scripts
 
