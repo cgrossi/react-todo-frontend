@@ -52,22 +52,22 @@ class TaskList extends Component {
     this.setState({ tasks: newState })
   }
 
-  taskEdit = async (id, text, checked) => {
-    let response = await db.patch(`/tasks/${id}/`, {
-        text: text,
-        completed: checked
+  taskSave = async (id, text, cb) => {
+    const response = await db.put(`/tasks/${id}/`, {
+        title: text
       }
     )
+    const updatedTask = response.data
 
     let newState = this.state.tasks.map(task => {
-      if(task.id === +id) {
-        task.title = response.data.text
-        task.completed = response.data.completed
-        return task
+      if(task.id === id) {
+        task.title = updatedTask.title
+        task.completed = updatedTask.completed
       }
       return task
     })
 
+    cb()
     this.setState({ tasks: newState })
   }
 
@@ -80,6 +80,10 @@ class TaskList extends Component {
   sortTasks = () => {
     let sorted = [...this.state.tasks].sort((a, b) => (a.completed === b.completed) ? 0 : a.completed ? 1 : -1)
     this.setState({tasks: sorted})
+  }
+
+  componentDidUpdate() {
+    console.log('task component updated')
   }
 
   componentDidMount() {
@@ -111,7 +115,8 @@ class TaskList extends Component {
       taskDelete={this.taskDelete}
       handleCheck={this.handleCheck} 
       completed={task.completed}
-      taskEdit={this.taskEdit} />)
+      taskSave={this.taskSave}
+       />)
     } else {
       tasks = this.state.tasks.map(task => <Task 
         key={task.id} 
@@ -120,7 +125,7 @@ class TaskList extends Component {
         taskDelete={this.taskDelete}
         handleCheck={this.handleCheck} 
         completed={task.completed}
-        taskEdit={this.taskEdit} />)
+        taskSave={this.taskSave} />)
     }
 
     return (
