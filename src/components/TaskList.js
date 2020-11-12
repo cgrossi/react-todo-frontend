@@ -82,10 +82,6 @@ class TaskList extends Component {
     this.setState({tasks: sorted})
   }
 
-  componentDidUpdate() {
-    console.log('task component updated')
-  }
-
   componentDidMount() {
     this.setState({ loading: true })
     db.get('/tasks').then(response => {

@@ -9,6 +9,8 @@ It's wired up to a seperate backend running Django and a Postgres DB hosted on H
 - ~~Implement editing of tasks~~
 - Implement component to add custom task text when 'add task' is clicked
 - Set up linter
+- Implement completion of tasks feature
+
 
 ## Available Scripts
 
