@@ -18,8 +18,7 @@ class Task extends Component {
 
   handleClick = (e) => {
     if(e.target.type === 'checkbox'){
-      let label = document.querySelector(`label[for="${this.props.id}"`)
-      this.props.handleCheck(e.target.id, label.innerHTML, e.target.checked)
+      this.props.handleCheck(e.target.id, e.target.checked)
     }
   }
 

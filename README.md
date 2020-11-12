@@ -2,14 +2,14 @@ This repo is the front end of a todo application created with React. ~~It's live
 It's wired up to a seperate backend running Django and a Postgres DB hosted on Heroku
 
 # Todo on the Todo's App
-- Add Sort Feature
+- Implement sort completed functionality
 - Make Header
 - Build & connect new backend
 - Convert components to modern React Hooks
 - ~~Implement editing of tasks~~
 - Implement component to add custom task text when 'add task' is clicked
 - Set up linter
-- Implement completion of tasks feature
+- ~~Implement completion of tasks check functionality~~
 
 
 ## Available Scripts

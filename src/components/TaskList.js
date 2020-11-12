@@ -13,17 +13,14 @@ class TaskList extends Component {
     filteredTasks: []
   }
 
-  handleCheck = async (id, text, checked) => {
-    let response = await db.patch(`/tasks/${id}/`, {
-      text: text,
+  handleCheck = async (id, checked) => {
+    let response = await db.put(`/tasks/${id}/`, {
       completed: checked
     })
     
     let newState = this.state.tasks.map(task => {
-      if(task.id === +id) {
-        task.text = response.data.text
+      if(task.id === id) {
         task.completed = response.data.completed
-        return task
       }
       return task
     })
