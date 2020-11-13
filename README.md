@@ -1,6 +1,8 @@
-This repo is the front end of a todo application created with React. It's hooked up to a backend created with Node and Express and uses MongoDB as a datastore.
+This repo is the front end of a todo application created with React. It's hooked up to a backend on Heroku created with Node and Express and uses MongoDB as a datastore.
 
 The app frontend is live and deployed on Netlify at [https://cgrossi-todo-app.netlify.app](https://cgrossi-todo-app.netlify.app)
+
+The app backend is live and deployed to Heroku
 
 You can find the backend repository for this app at [https://github.com/cgrossi/react-task-app-backend](https://github.com/cgrossi/react-task-app-backend)
 
@@ -10,7 +12,7 @@ You can find the backend repository for this app at [https://github.com/cgrossi/
 - Make Header
 - Implement Users and authentication
 - ~~Build & connect new backend~~
-- Deploy backend
+- ~~Deploy backend~~
 - ~~Deploy frontend~~
 - Convert components to modern React Hooks
 - ~~Implement editing of tasks~~
