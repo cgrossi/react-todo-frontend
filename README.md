@@ -3,7 +3,7 @@ This repo is the front end of a todo application created with React. It's hooked
 You can find the backend repository for this app at [https://github.com/cgrossi/react-task-app-backend](https://github.com/cgrossi/react-task-app-backend)
 
 # Todo on the Todo's App
-- Implement filter completed tasks functionality
+- ~~Implement filter completed tasks functionality~~
 - Implement sort tasks functionality (Various sorts?)
 - Make Header
 - Implement Users and authentication

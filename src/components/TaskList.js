@@ -47,7 +47,7 @@ class TaskList extends Component {
     await db.delete(`/tasks/${id}/`)
 
     let newState = this.state.tasks.filter(task => task.id !== id)
-    
+
     this.setState({ tasks: newState })
   }
 
@@ -96,7 +96,7 @@ class TaskList extends Component {
         tasks: newState,
         loading: false
       })
-    }).catch(e => console.log(e))
+    })
   }
   
 
