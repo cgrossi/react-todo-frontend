@@ -45,7 +45,9 @@ class TaskList extends Component {
 
   taskDelete = async (id) => {
     await db.delete(`/tasks/${id}/`)
-    let newState = this.state.tasks.filter(task => task.id !== +id)
+
+    let newState = this.state.tasks.filter(task => task.id !== id)
+    
     this.setState({ tasks: newState })
   }
 

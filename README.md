@@ -1,15 +1,21 @@
-This repo is the front end of a todo application created with React. ~~It's live on Surge at [http://stackmusetaskmanager.surge.sh/](http://stackmusetaskmanager.surge.sh/)~~
-It's wired up to a seperate backend running Django and a Postgres DB hosted on Heroku
+This repo is the front end of a todo application created with React. It's hooked up to a backend created with Node and Express and uses MongoDB as a datastore.
+
+You can find the backend repository for this app at [https://github.com/cgrossi/react-task-app-backend](https://github.com/cgrossi/react-task-app-backend)
 
 # Todo on the Todo's App
-- Implement sort completed functionality
+- Implement filter completed tasks functionality
+- Implement sort tasks functionality (Various sorts?)
 - Make Header
-- Build & connect new backend
+- Implement Users and authentication
+- ~~Build & connect new backend~~
+- Deploy backend
+- Deploy frontend
 - Convert components to modern React Hooks
 - ~~Implement editing of tasks~~
 - Implement component to add custom task text when 'add task' is clicked
 - Set up linter
 - ~~Implement completion of tasks check functionality~~
+- ~~Implement delete functionality on the frontend + connect to backend~~
 
 
 ## Available Scripts
